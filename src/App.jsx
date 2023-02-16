@@ -8,6 +8,12 @@ function App() {
   const [input, setInput] = useState("");
   const [cep, setCep] = useState({});
 
+  function verification(response) {
+    if (Object.keys(response.data).length === 1) {
+      alert("Verifique o campo preenchido e tente novamente!");
+    }
+  }
+
   async function handleSearch() {
     if (input === "") {
       alert("Preencha com algum CEP");
@@ -22,6 +28,8 @@ function App() {
       alert("Erro ao buscar CEP");
       setInput("");
     }
+
+    verification(response);
   }
 
   return (
