@@ -23,13 +23,12 @@ function App() {
     try {
       const response = await api.get(`${input}/json`);
       setCep(response.data);
+      verification(response);
       setInput("");
     } catch (error) {
       alert("Erro ao buscar CEP");
       setInput("");
     }
-
-    verification(response);
   }
 
   return (
